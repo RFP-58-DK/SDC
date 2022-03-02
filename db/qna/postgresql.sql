@@ -1,34 +1,32 @@
-DROP DATABASE IF EXISTS QnA;
+DROP DATABASE IF EXISTS qna;
 
-CREATE DATABASE QnA;
+CREATE DATABASE qna;
 
-\c QnA
+\c qna
 
 CREATE TABLE IF NOT EXISTS product (
- product_id BIGSERIAL
+ product_id SERIAL
 );
 
 ALTER TABLE product ADD CONSTRAINT product_pkey PRIMARY KEY (product_id);
 
 CREATE TABLE questions (
- question_id BIGSERIAL,
- question_body VARCHAR(100),
- question_date VARCHAR(50),
- asker_name VARCHAR(20),
+ question_id SERIAL,
+ question_body VARCHAR(100) NOT NULL,
+ question_date VARCHAR(50) NOT NULL,
+ asker_name VARCHAR(20) NOT NULL,
  question_helpfulness INTEGER,
  question_reported BOOLEAN,
  product_id SERIAL
 );
 
 ALTER TABLE questions ADD CONSTRAINT questions_pkey PRIMARY KEY (question_id);
--- ALTER TABLE questions ADD CONSTRAINT questions_pkey KEY ();
--- ALTER TABLE questions ADD CONSTRAINT questions_pkey KEY ();
 
 CREATE TABLE answers (
- answer_id BIGSERIAL,
- answer_body VARCHAR,
- answer_date VARCHAR,
- answerer_name VARCHAR,
+ answer_id SERIAL,
+ answer_body VARCHAR(100) NOT NULL,
+ answer_date VARCHAR(50) NOT NULL,
+ answerer_name VARCHAR(20) NOT NULL,
  answer_helpfulness INTEGER,
  question_id SERIAL
 );
@@ -36,8 +34,8 @@ CREATE TABLE answers (
 ALTER TABLE answers ADD CONSTRAINT answers_pkey PRIMARY KEY (answer_id);
 
 CREATE TABLE photos (
- photo_id BIGSERIAL,
- photo_url VARCHAR,
+ photo_id SERIAL,
+ photo_url VARCHAR(100) NOT NULL,
  answer_id SERIAL
 );
 
