@@ -1,0 +1,29 @@
+const mongoose = require('mongoose');
+
+const reviews = new mongoose.Schema({
+  product_id: Number,
+  review_id: Number,
+  rating: Number,
+  summary: String,
+  recommend: Boolean,
+  response: String,
+  body: String,
+  date: Date,
+  reviewer_name: String,
+  helpfulness: Number,
+  photos: Array,
+  meta: {
+    ratings: {
+      1: Number,
+      2: Number,
+      3: Number,
+      4: Number,
+      5: Number,
+    },
+    recommended: {
+      true: Boolean,
+      false: Boolean,
+    },
+    characteristics: {},
+  },
+});
